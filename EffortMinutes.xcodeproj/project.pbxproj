@@ -7,16 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330F6ED22796342F00AE8BA2 /* RankDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330F6ED12796342F00AE8BA2 /* RankDetailViewController.swift */; };
+		330F6ED4279713CC00AE8BA2 /* MainTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330F6ED3279713CC00AE8BA2 /* MainTabBarItem.swift */; };
+		330F6ED6279723F700AE8BA2 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330F6ED5279723F700AE8BA2 /* MainTabBar.swift */; };
+		330F6ED82797252500AE8BA2 /* MainViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330F6ED72797252500AE8BA2 /* MainViewControllerContainer.swift */; };
 		333B90CE278CA6F700429B32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90CD278CA6F700429B32 /* AppDelegate.swift */; };
 		333B90D0278CA6F700429B32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90CF278CA6F700429B32 /* SceneDelegate.swift */; };
 		333B90D2278CA6F700429B32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90D1278CA6F700429B32 /* ViewController.swift */; };
 		333B90D5278CA6F700429B32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333B90D3278CA6F700429B32 /* Main.storyboard */; };
 		333B90D7278CA6F900429B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 333B90D6278CA6F900429B32 /* Assets.xcassets */; };
 		333B90DA278CA6F900429B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333B90D8278CA6F900429B32 /* LaunchScreen.storyboard */; };
+		333B90E2278D0C2B00429B32 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90E1278D0C2B00429B32 /* CircleProgress.swift */; };
+		333B90E4278D1FFC00429B32 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90E3278D1FFC00429B32 /* LineView.swift */; };
+		333B90E6278F334C00429B32 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90E5278F334C00429B32 /* RankViewController.swift */; };
+		333B90EA27907F6600429B32 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90E927907F6600429B32 /* Rank.swift */; };
+		333B90EC2791E14100429B32 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90EB2791E14100429B32 /* RankView.swift */; };
+		333B90EE279282E000429B32 /* Extensions+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B90ED279282E000429B32 /* Extensions+.swift */; };
+		339B849427934B84000E7ECF /* RankDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B849327934B84000E7ECF /* RankDetailPresentationController.swift */; };
+		339B849727934E32000E7ECF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 339B849627934E32000E7ECF /* SnapKit */; };
+		339B84992793514C000E7ECF /* RankDetailTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B84982793514C000E7ECF /* RankDetailTransitioningDelegate.swift */; };
+		33B21B1027974C07009F9188 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B21B0F27974C07009F9188 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		333B90CA278CA6F700429B32 /* CircleBuns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircleBuns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		330F6ED12796342F00AE8BA2 /* RankDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailViewController.swift; sourceTree = "<group>"; };
+		330F6ED3279713CC00AE8BA2 /* MainTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarItem.swift; sourceTree = "<group>"; };
+		330F6ED5279723F700AE8BA2 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
+		330F6ED72797252500AE8BA2 /* MainViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerContainer.swift; sourceTree = "<group>"; };
+		333B90CA278CA6F700429B32 /* EffortMinutes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffortMinutes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333B90CD278CA6F700429B32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		333B90CF278CA6F700429B32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		333B90D1278CA6F700429B32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +42,15 @@
 		333B90D6278CA6F900429B32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		333B90D9278CA6F900429B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		333B90DB278CA6F900429B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		333B90E1278D0C2B00429B32 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
+		333B90E3278D1FFC00429B32 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		333B90E5278F334C00429B32 /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		333B90E927907F6600429B32 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		333B90EB2791E14100429B32 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		333B90ED279282E000429B32 /* Extensions+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+.swift"; sourceTree = "<group>"; };
+		339B849327934B84000E7ECF /* RankDetailPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailPresentationController.swift; sourceTree = "<group>"; };
+		339B84982793514C000E7ECF /* RankDetailTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailTransitioningDelegate.swift; sourceTree = "<group>"; };
+		33B21B0F27974C07009F9188 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				339B849727934E32000E7ECF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +68,7 @@
 		333B90C1278CA6F700429B32 = {
 			isa = PBXGroup;
 			children = (
-				333B90CC278CA6F700429B32 /* CircleBuns */,
+				333B90CC278CA6F700429B32 /* EffortMinutes */,
 				333B90CB278CA6F700429B32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +76,44 @@
 		333B90CB278CA6F700429B32 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				333B90CA278CA6F700429B32 /* CircleBuns.app */,
+				333B90CA278CA6F700429B32 /* EffortMinutes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		333B90CC278CA6F700429B32 /* CircleBuns */ = {
+		333B90CC278CA6F700429B32 /* EffortMinutes */ = {
 			isa = PBXGroup;
 			children = (
 				333B90CD278CA6F700429B32 /* AppDelegate.swift */,
 				333B90CF278CA6F700429B32 /* SceneDelegate.swift */,
+				333B90E1278D0C2B00429B32 /* CircleProgress.swift */,
+				333B90EB2791E14100429B32 /* RankView.swift */,
+				339B849327934B84000E7ECF /* RankDetailPresentationController.swift */,
+				333B90ED279282E000429B32 /* Extensions+.swift */,
+				330F6ED72797252500AE8BA2 /* MainViewControllerContainer.swift */,
 				333B90D1278CA6F700429B32 /* ViewController.swift */,
+				33B21B0F27974C07009F9188 /* TimerView.swift */,
+				330F6ED3279713CC00AE8BA2 /* MainTabBarItem.swift */,
+				333B90E5278F334C00429B32 /* RankViewController.swift */,
+				330F6ED5279723F700AE8BA2 /* MainTabBar.swift */,
+				339B84982793514C000E7ECF /* RankDetailTransitioningDelegate.swift */,
+				333B90E927907F6600429B32 /* Rank.swift */,
+				333B90E3278D1FFC00429B32 /* LineView.swift */,
 				333B90D3278CA6F700429B32 /* Main.storyboard */,
 				333B90D6278CA6F900429B32 /* Assets.xcassets */,
 				333B90D8278CA6F900429B32 /* LaunchScreen.storyboard */,
 				333B90DB278CA6F900429B32 /* Info.plist */,
+				330F6ED12796342F00AE8BA2 /* RankDetailViewController.swift */,
 			);
-			path = CircleBuns;
+			path = EffortMinutes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		333B90C9278CA6F700429B32 /* CircleBuns */ = {
+		333B90C9278CA6F700429B32 /* EffortMinutes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 333B90DE278CA6F900429B32 /* Build configuration list for PBXNativeTarget "CircleBuns" */;
+			buildConfigurationList = 333B90DE278CA6F900429B32 /* Build configuration list for PBXNativeTarget "EffortMinutes" */;
 			buildPhases = (
 				333B90C6278CA6F700429B32 /* Sources */,
 				333B90C7278CA6F700429B32 /* Frameworks */,
@@ -82,9 +123,12 @@
 			);
 			dependencies = (
 			);
-			name = CircleBuns;
+			name = EffortMinutes;
+			packageProductDependencies = (
+				339B849627934E32000E7ECF /* SnapKit */,
+			);
 			productName = CircleBuns;
-			productReference = 333B90CA278CA6F700429B32 /* CircleBuns.app */;
+			productReference = 333B90CA278CA6F700429B32 /* EffortMinutes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +146,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 333B90C5278CA6F700429B32 /* Build configuration list for PBXProject "CircleBuns" */;
+			buildConfigurationList = 333B90C5278CA6F700429B32 /* Build configuration list for PBXProject "EffortMinutes" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,11 +155,14 @@
 				Base,
 			);
 			mainGroup = 333B90C1278CA6F700429B32;
+			packageReferences = (
+				339B849527934E32000E7ECF /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 333B90CB278CA6F700429B32 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				333B90C9278CA6F700429B32 /* CircleBuns */,
+				333B90C9278CA6F700429B32 /* EffortMinutes */,
 			);
 		};
 /* End PBXProject section */
@@ -138,8 +185,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333B90EC2791E14100429B32 /* RankView.swift in Sources */,
 				333B90D2278CA6F700429B32 /* ViewController.swift in Sources */,
+				330F6ED6279723F700AE8BA2 /* MainTabBar.swift in Sources */,
+				333B90E4278D1FFC00429B32 /* LineView.swift in Sources */,
+				339B84992793514C000E7ECF /* RankDetailTransitioningDelegate.swift in Sources */,
+				333B90EE279282E000429B32 /* Extensions+.swift in Sources */,
+				33B21B1027974C07009F9188 /* TimerView.swift in Sources */,
+				333B90E6278F334C00429B32 /* RankViewController.swift in Sources */,
 				333B90CE278CA6F700429B32 /* AppDelegate.swift in Sources */,
+				330F6ED22796342F00AE8BA2 /* RankDetailViewController.swift in Sources */,
+				330F6ED82797252500AE8BA2 /* MainViewControllerContainer.swift in Sources */,
+				333B90E2278D0C2B00429B32 /* CircleProgress.swift in Sources */,
+				330F6ED4279713CC00AE8BA2 /* MainTabBarItem.swift in Sources */,
+				333B90EA27907F6600429B32 /* Rank.swift in Sources */,
+				339B849427934B84000E7ECF /* RankDetailPresentationController.swift in Sources */,
 				333B90D0278CA6F700429B32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,10 +351,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W8U24UXMM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CircleBuns/Info.plist;
+				INFOPLIST_FILE = EffortMinutes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Effort Minutes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,11 +363,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.donderapps.CircleBuns;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donderapps.EffortMinutes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,10 +380,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W8U24UXMM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CircleBuns/Info.plist;
+				INFOPLIST_FILE = EffortMinutes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Effort Minutes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,18 +392,18 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.donderapps.CircleBuns;
+				PRODUCT_BUNDLE_IDENTIFIER = com.donderapps.EffortMinutes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		333B90C5278CA6F700429B32 /* Build configuration list for PBXProject "CircleBuns" */ = {
+		333B90C5278CA6F700429B32 /* Build configuration list for PBXProject "EffortMinutes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				333B90DC278CA6F900429B32 /* Debug */,
@@ -350,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		333B90DE278CA6F900429B32 /* Build configuration list for PBXNativeTarget "CircleBuns" */ = {
+		333B90DE278CA6F900429B32 /* Build configuration list for PBXNativeTarget "EffortMinutes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				333B90DF278CA6F900429B32 /* Debug */,
@@ -360,6 +422,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		339B849527934E32000E7ECF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		339B849627934E32000E7ECF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339B849527934E32000E7ECF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 333B90C2278CA6F700429B32 /* Project object */;
 }
