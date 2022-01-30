@@ -1,46 +1,45 @@
 //
-//  RankDetailTransitioningDelegate.swift
-//  EffortMinutes
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/15/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 import SnapKit
 
-final class RankDetailTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
-  private var rankViewFrame: CGRect?
+final public class GenericTransitioningDelegate<Presentation: UIViewControllerAnimatedTransitioning, Dismissal: UIViewControllerAnimatedTransitioning>: NSObject, UIViewControllerTransitioningDelegate {
   
-  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return RankDetailPresentationController(presentedViewController: presented, presenting: presenting)
+  var presentation: Presentation
+  var dismissal: Dismissal
+  
+  public init(presentation: Presentation, dismissal: Dismissal) {
+    self.presentation = presentation
+    self.dismissal = dismissal
   }
   
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return RankDetailDismissAnimation()
+  public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    return DimmedPresentationController(presentedViewController: presented, presenting: presenting)
   }
   
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return RankDetailPresentAnimation(initialFrame: rankViewFrame!)
+  public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return PopDismissAnimation()
   }
   
-  func setRankViewFrame(_ frame: CGRect) {
-    self.rankViewFrame = frame
+  public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return PopPresentAnimation()
   }
+  
 }
 
-final class RankDetailPresentAnimation: NSObject, UIViewControllerAnimatedTransitioning {
-  private var initialFrame: CGRect
+final public class PopPresentAnimation: NSObject, UIViewControllerAnimatedTransitioning {
   
-  init(initialFrame: CGRect) {
-    self.initialFrame = initialFrame
-    super.init()
-  }
-  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+  public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return 0.4
   }
   
-  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+  public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let key: UITransitionContextViewControllerKey = .to
     
     /* Get the controller we plan to present */
@@ -76,13 +75,13 @@ final class RankDetailPresentAnimation: NSObject, UIViewControllerAnimatedTransi
 }
 
 
-final class RankDetailDismissAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+final public class PopDismissAnimation: NSObject, UIViewControllerAnimatedTransitioning {
   
-  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+  public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return 0.4
   }
   
-  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+  public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let key: UITransitionContextViewControllerKey = .from
     
     /* Get the controller we plan to present */

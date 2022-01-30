@@ -1,15 +1,15 @@
 //
-//  RankDetailPresentationController.swift
-//  EffortMinutes
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/15/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 import SnapKit
 
-final class RankDetailPresentationController: UIPresentationController {
+final public class DimmedPresentationController: UIPresentationController {
   
   lazy var dimmingView: UIView = setupDimmingView()
   
@@ -30,7 +30,7 @@ final class RankDetailPresentationController: UIPresentationController {
     return vibrancyView
   }()
   
-  override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+  override public init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
     super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     
     /* Add dismiss on tap */
@@ -40,7 +40,7 @@ final class RankDetailPresentationController: UIPresentationController {
     blurEffectView.addGestureRecognizer(recognizer)
   }
   
-  override func presentationTransitionWillBegin() {
+  override public func presentationTransitionWillBegin() {
     guard let containerView = containerView else { return }
     containerView.insertSubview(blurEffectView, at: 0)
     
@@ -62,7 +62,7 @@ final class RankDetailPresentationController: UIPresentationController {
     }
   }
   
-  override func dismissalTransitionWillBegin() {
+  override public func dismissalTransitionWillBegin() {
     guard let coordinator = presentedViewController.transitionCoordinator else {
       blurEffectView.alpha = 0.0
       return
@@ -74,7 +74,7 @@ final class RankDetailPresentationController: UIPresentationController {
   }
 }
 
-extension RankDetailPresentationController {
+extension DimmedPresentationController {
   private func setupDimmingView() -> UIView {
     let dimmingView = UIView()
     dimmingView.translatesAutoresizingMaskIntoConstraints = false

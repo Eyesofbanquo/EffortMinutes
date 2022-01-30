@@ -1,19 +1,18 @@
 //
-//  CircleProgress.swift
-//  CircleBuns
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/10/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 
-protocol CircleProgressDelegate: AnyObject {
-  func circleProgress(_ circleProgress: CircleProgress,
-                      degress: Double)
-}
-
-final class CircleProgress: UIView {
+final public class CircleProgress: UIView {
+  
+  enum State {
+    case active, inactive
+  }
   
   // MARK: - Properties -
   let radius: CGFloat
@@ -22,19 +21,22 @@ final class CircleProgress: UIView {
   let ballRadius: CGFloat
   let ballColor: UIColor
   let maxValue: Double
+  var circularShapeLayer: CAShapeLayer = CAShapeLayer()
+  var ballShapeLayer: CAShapeLayer = CAShapeLayer()
+  var state: State = .active
   
-  typealias CircleProgressArgs = (radius: CGFloat,
+  public typealias CircleProgressArgs = (radius: CGFloat,
                                   outlineColor: UIColor,
                                   lineWidth: CGFloat,
                                   ballRadius: CGFloat,
                                   ballColor: UIColor,
                                   maxValue: Double)
   
-  weak var delegate: CircleProgressDelegate?
+  weak public var delegate: CircleProgressDelegate?
   
-  var ballView: UIView!
+  private var ballView: UIView!
   
-  init(args: CircleProgressArgs) {
+  public init(args: CircleProgressArgs) {
     self.radius = args.radius
     self.outlineColor = args.outlineColor
     self.lineWidth = args.lineWidth
@@ -56,10 +58,22 @@ final class CircleProgress: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override var intrinsicContentSize: CGSize {
+  override public var intrinsicContentSize: CGSize {
     CGSize(width: radius * 2.0 + ballRadius * 2.0,
            height: radius * 2.0 + ballRadius * 2.0)
     
+  }
+  
+  public func activate() {
+//    circularShapeLayer.opacity = 1.0
+    ballShapeLayer.opacity = 1.0
+    self.state = .active
+  }
+  
+  public func deactivate() {
+//    circularShapeLayer.opacity = 0.0
+    ballShapeLayer.opacity = 0.0
+    self.state = .inactive
   }
   
   private func createCircluarPath() {
@@ -70,14 +84,13 @@ final class CircleProgress: UIView {
                                   endAngle: CGFloat(Double.pi * 2),
                                   clockwise: true)
     
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.path = circlePath.cgPath
+    circularShapeLayer.path = circlePath.cgPath
     
-    shapeLayer.fillColor = UIColor.clear.cgColor
-    shapeLayer.strokeColor = outlineColor.cgColor
-    shapeLayer.lineWidth = lineWidth
+    circularShapeLayer.fillColor = UIColor.clear.cgColor
+    circularShapeLayer.strokeColor = outlineColor.cgColor
+    circularShapeLayer.lineWidth = lineWidth
     
-    self.layer.addSublayer(shapeLayer)
+    self.layer.addSublayer(circularShapeLayer)
   }
   
   private func createBallView() {
@@ -95,13 +108,11 @@ final class CircleProgress: UIView {
                                 startAngle: CGFloat(0),
                                 endAngle: CGFloat(Double.pi * 2),
                                 clockwise: true)
-    
-    let ballLayer = CAShapeLayer()
-    ballLayer.path = ballPath.cgPath
+    ballShapeLayer.path = ballPath.cgPath
     
     // Change the fill color
-    ballLayer.fillColor = ballColor.cgColor
-    ballView.layer.addSublayer(ballLayer)
+    ballShapeLayer.fillColor = ballColor.cgColor
+    ballView.layer.addSublayer(ballShapeLayer)
     self.addSubview(ballView)
   }
   

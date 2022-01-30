@@ -1,20 +1,21 @@
 //
-//  RankDetailViewController.swift
-//  EffortMinutes
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/17/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 import SwiftUI
 import SnapKit
+import EffortModel
 
-final class RankDetailViewController: UIViewController {
+public final class RankDetailViewController: UIViewController {
   
   private var rank: Rank
   
-  init(rank: Rank) {
+  public init(rank: Rank) {
     self.rank = rank
     super.init(nibName: nil, bundle: nil)
   }
@@ -25,7 +26,7 @@ final class RankDetailViewController: UIViewController {
   
   // MARK: - Lifecycle -
   
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     
     let hostingController = UIHostingController(rootView: RankDetailView(rank: rank))
@@ -54,7 +55,7 @@ fileprivate struct RankDetailView: View {
           .frame(maxWidth: .infinity)
           .padding([.top, .bottom])
           .background(Color(uiColor: UIColor(hexString: "#8E6C88")))
-          
+        
           .ignoresSafeArea()
         ScrollView {
           VStack {

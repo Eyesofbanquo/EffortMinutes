@@ -1,15 +1,15 @@
 //
-//  Extensions+.swift
-//  CircleBuns
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/14/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 
 extension UIColor {
-  convenience init(hexString: String) {
+  convenience public init(hexString: String) {
     let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
     var int = UInt64()
     Scanner(string: hex).scanHexInt64(&int)

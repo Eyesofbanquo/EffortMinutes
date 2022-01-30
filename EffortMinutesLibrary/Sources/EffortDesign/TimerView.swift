@@ -1,19 +1,23 @@
 //
-//  TimerView.swift
-//  EffortMinutes
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/18/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 import SnapKit
 
-protocol TimerViewDelegate: AnyObject { }
+public protocol TimerViewDelegate: AnyObject { }
 
-final class TimerView: UIView {
+public final class TimerView: UIView {
   
-  static private var IntentionalMinutes: [Int] = [
+  public enum State {
+    case active, inactive
+  }
+  
+  static private var IntentionalMinutes: [TimeInterval] = [
     10, 15, 20,
     25, 30, 35,
     35, 40, 45,
@@ -61,18 +65,26 @@ final class TimerView: UIView {
   
   private var timeLabel: UILabel
   
-  var currentPosition: Int?
+  var currentPosition: Int
+  
+  public var selectedTime: TimeInterval {
+    return Self.IntentionalMinutes[currentPosition]
+  }
   
   var disabled: Bool = false
   
-  weak var delegate: TimerViewDelegate?
+  public weak var delegate: TimerViewDelegate?
   
-  init() {
+  public var state: State = .inactive
+  
+  public init() {
     self.timeLabel = UILabel()
     timeLabel.translatesAutoresizingMaskIntoConstraints = false
     timeLabel.text = "\(Self.IntentionalMinutes[0]):00 IM"
     timeLabel.textColor = .init(hexString: "#263D42")
     timeLabel.font = .preferredFont(forTextStyle: .title1)
+    
+    currentPosition = 0
     
     super.init(frame: .zero)
     
@@ -91,10 +103,30 @@ final class TimerView: UIView {
   required init?(coder: NSCoder) {
     fatalError()
   }
+  
+  public func start() {
+    /* Hide */
+    circleProgress.deactivate()
+    
+    self.state = .active
+  }
+  
+  public func stop() {
+    /* */
+    circleProgress.activate()
+    self.state = .inactive
+  }
+  
+  public func setTimerText(_ text: String?) {
+    UIView.transition(with: timeLabel, duration: 0.4, options: .curveEaseInOut) {
+      self.timeLabel.text = text
+    }
+  }
 }
 
 extension TimerView: CircleProgressDelegate {
-  func circleProgress(_ circleProgress: CircleProgress, degress: Double) {
+  
+  public func circleProgress(_ circleProgress: CircleProgress, degress: Double) {
     for i in (0..<Self.IntentionalMinutes.count) {
       guard i + 1 < Self.IntentionalMinutes.count else {
         currentPosition = Self.IntentionalMinutes.count - 1
@@ -111,12 +143,8 @@ extension TimerView: CircleProgressDelegate {
         break
       }
     }
-    
-    
-    if let currentPosition = currentPosition {
-      print(Self.IntentionalMinutes[currentPosition], currentPosition)
-      timeLabel.text = "\(Self.IntentionalMinutes[currentPosition]):00 IM"
-    }
+    print(Self.IntentionalMinutes[currentPosition], currentPosition)
+    timeLabel.text = "\(Self.IntentionalMinutes[currentPosition]):00 IM"
     
   }
 }

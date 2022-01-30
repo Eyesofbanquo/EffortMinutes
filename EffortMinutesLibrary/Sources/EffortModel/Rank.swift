@@ -1,15 +1,15 @@
 //
-//  Rank.swift
-//  CircleBuns
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/13/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
 
-enum Rank: String, CaseIterable {
-  typealias RankValue = Double
+public enum Rank: String, CaseIterable {
+  public typealias RankValue = Double
   
   static var rankModifiers = ["super", "ultra", "grand", "ultimate"]
   
@@ -23,7 +23,7 @@ enum Rank: String, CaseIterable {
   case ultimateGrandMaster = "ultimategrandmaster"
   case warlord
   
-  init(rankValue: RankValue) {
+  public init(rankValue: RankValue) {
     switch rankValue {
       case 0...499: self = .rookie
       case 500...999: self = .bronze
@@ -48,7 +48,7 @@ enum Rank: String, CaseIterable {
     }
   }
   
-  var displayName: String {
+  public var displayName: String {
     switch self {
       case .rookie, .bronze, .silver, .gold, .platinum, .diamond, .warlord, .master: return self.rawValue.capitalized
       case .superBronze, .ultraBronze, .superSilver, .ultraSilver, .superGold, .ultraGold, .superPlatinum, .ultraPlatinum, .superDiamond, .ultraDiamond, .grandMaster, .ultimateGrandMaster:
@@ -63,7 +63,7 @@ enum Rank: String, CaseIterable {
     }
   }
   
-  var subtitle: String {
+  public var subtitle: String {
     switch self {
       case .warlord:
         return "\(self.range.lowerBound) EM"
@@ -71,7 +71,7 @@ enum Rank: String, CaseIterable {
     }
   }
   
-  var range: ClosedRange<Int> {
+  public var range: ClosedRange<Int> {
     switch self {
       case .rookie: return 0...499
       case .bronze: return 500...999
@@ -96,11 +96,11 @@ enum Rank: String, CaseIterable {
     }
   }
   
-  var color: UIColor? {
+  public var color: UIColor? {
     nil
   }
   
-  static func +(lhs: Rank, rhs: Int) -> Rank? {
+  public static func +(lhs: Rank, rhs: Int) -> Rank? {
     if rhs > Rank.allCases.count {
       return .warlord
     }

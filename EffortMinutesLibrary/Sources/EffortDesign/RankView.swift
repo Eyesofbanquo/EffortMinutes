@@ -1,33 +1,28 @@
 //
-//  RankView.swift
-//  CircleBuns
+//  File.swift
+//  
 //
-//  Created by Markim Shaw on 1/14/22.
+//  Created by Markim Shaw on 1/27/22.
 //
 
 import Foundation
 import UIKit
+import EffortModel
 
-protocol RankViewDelegate: AnyObject {
-  func rankView(_ rankView: RankView, didSelectRank rank: Rank)
-}
-
-final class RankView: UIView {
+public final class RankView: UIView {
   
   private lazy var button: UIButton = UIButton(type: .system)
   private let rank: Rank
   private let size: CGSize
   private weak var delegate: RankViewDelegate?
   
-  init(rank: Rank,
+  public init(rank: Rank,
        size: CGSize,
        delegate: RankViewDelegate? = nil) {
     self.rank = rank
     self.size = size
     self.delegate = delegate
     super.init(frame: .zero)
-    
-//    backgroundColor = .red
     
     /* Add Subviews */
     let label = UILabel()
@@ -62,20 +57,14 @@ final class RankView: UIView {
     button.layoutIfNeeded()
     
     self.clipsToBounds = false
-    
-    /* Add Gesture */
-//    button.addTarget(self, action: #selector(self.buttonPressed(_:forEvent:)), for: .touchUpInside)
   }
   
-  override var intrinsicContentSize: CGSize {
+  override public var intrinsicContentSize: CGSize {
     CGSize(width: button.frame.width, height: button.frame.height)
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  @objc private func buttonPressed(_ sender: UIButton, forEvent event: UIEvent) {
-    
-  }
 }
+

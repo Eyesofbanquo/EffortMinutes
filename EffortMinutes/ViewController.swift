@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import EffortDesign
 
 class ViewController: UIViewController {
   
@@ -49,9 +50,6 @@ class ViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
-    
-   
   }
 }
 
