@@ -66,14 +66,26 @@ final public class CircleProgress: UIView {
   
   public func activate() {
 //    circularShapeLayer.opacity = 1.0
-    ballShapeLayer.opacity = 1.0
+    self.ballShapeLayer.opacity = 1.0
+    let animation = CABasicAnimation(keyPath: "opacity")
+    animation.fromValue = 0.0
+    animation.toValue = 1.0
+    animation.duration = 0.4
+    self.ballShapeLayer.add(animation, forKey: "visibility")
     self.state = .active
+
   }
   
   public func deactivate() {
 //    circularShapeLayer.opacity = 0.0
-    ballShapeLayer.opacity = 0.0
+    self.ballShapeLayer.opacity = 0.0
+    let animation = CABasicAnimation(keyPath: "opacity")
+    animation.fromValue = 1.0
+    animation.toValue = 0.0
+    animation.duration = 0.4
+    self.ballShapeLayer.add(animation, forKey: "visibility")
     self.state = .inactive
+
   }
   
   private func createCircluarPath() {

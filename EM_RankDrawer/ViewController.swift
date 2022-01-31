@@ -9,12 +9,28 @@ import UIKit
 import EffortDesign
 import EffortModel
 import SnapKit
+import RealmSwift
 
 class ViewController: UIViewController {
   
-  lazy var rankDrawer = RankPickerView(categories: [EMCategory(name: "Reading", effortMinutes: 100),
-                                                    EMCategory(name: "Writing", effortMinutes: 100),
-                                                    EMCategory(name: "Eating", effortMinutes: 100)])
+  lazy var store: Store = {
+    let config = Realm.Configuration(inMemoryIdentifier: "EM_RankDrawer")
+    let mapper = DataMapper(realm: try! Realm(configuration: config))
+    return mapper
+  }()
+  
+  lazy var rankDrawer: RankPickerView = {
+    /* Add items */
+    let categories = [EMCategory(name: "Reading", effortMinutes: 100),
+                      EMCategory(name: "Writing", effortMinutes: 100),
+                      EMCategory(name: "Eatingawfawfwa", effortMinutes: 100)]
+    categories.forEach { category in
+      try? self.store.addCategory(category)
+    }
+    
+    let picker = RankPickerView(store: store)
+    return picker
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()

@@ -1,16 +1,34 @@
 //
-//  ViewController.swift
-//  EM_Timer
+//  File.swift
+//  
 //
 //  Created by Markim Shaw on 1/30/22.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 import EffortDesign
 import UserNotifications
 
-class TimerViewController: UIViewController {
+fileprivate let formatter = DateComponentsFormatter()
+
+@propertyWrapper struct EffortedMinute {
+  var wrappedValue: TimeInterval
+  
+  var projectedValue: String {
+    let timeRemainingString = formatter.string(from: wrappedValue) ?? ""
+    let unitTimeRemainingString = timeRemainingString + " IM"
+    return unitTimeRemainingString
+  }
+  
+  init(wrappedValue: TimeInterval) {
+    
+    self.wrappedValue = wrappedValue
+  }
+}
+
+public class TimerViewController: UIViewController {
   
   // MARK: - Properties -
   var beginButton: UIButton!
@@ -23,9 +41,7 @@ class TimerViewController: UIViewController {
   var lastDateObserved: Date?
   
   let center = UNUserNotificationCenter.current()
-  
-  let formatter = DateComponentsFormatter()
-  
+    
   var timeRemaining: TimeInterval {
     (timerView.selectedTime * 60) - totalAccumulatedTime
   }
@@ -33,10 +49,16 @@ class TimerViewController: UIViewController {
     "\(timeRemaining / 60) IM"
   }
   
+  /** Inject an object that is from the model class
+   
+   This class handles how time is stored
+   
+   */
+  
   static var TIMER_NOTIFICATION_IDENTIFIER: String = "timer"
-
+  
   // MARK: - Lifecycle -
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     view.backgroundColor = .white
@@ -99,13 +121,13 @@ class TimerViewController: UIViewController {
       }
     }
   }
-
-
+  
+  
   @objc func fireTimer() {
     guard let lastDateObserved = lastDateObserved else {
       return
     }
-
+    
     let currentDate = Date().addingTimeInterval(-0.5)
     let currentAccumulatedTime = currentDate.timeIntervalSince(lastDateObserved)
     totalAccumulatedTime += currentAccumulatedTime
@@ -162,7 +184,7 @@ class TimerViewController: UIViewController {
     timerView.stop()
     self.maxTime = 0
     beginButton.configuration?.title = "Start"
-
+    
   }
   
   func createNotification() {
@@ -174,7 +196,7 @@ class TimerViewController: UIViewController {
     content.userInfo = ["value": "Data with local notification"]
     
     let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(timeRemaining))
-//    let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(5))
+    //    let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(5))
     let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
     let request = UNNotificationRequest(identifier: Self.TIMER_NOTIFICATION_IDENTIFIER, content: content, trigger: trigger)
     
@@ -191,7 +213,7 @@ class TimerViewController: UIViewController {
 }
 
 extension TimerViewController: TimerViewDelegate {
-  func timerView(_ timerView: TimerView, didUpdateTime time: TimeInterval) {
+  public func timerView(_ timerView: TimerView, didUpdateTime time: TimeInterval) {
     let timeRemainingString = formatter.string(from: timeRemaining) ?? ""
     let unitTimeRemainingString = timeRemainingString + " IM"
     timerView.setTimerText(unitTimeRemainingString)

@@ -61,7 +61,7 @@ final public class PopPresentAnimation: NSObject, UIViewControllerAnimatedTransi
     controller.view.alpha = 0.0
     
     let animationDuration = transitionDuration(using: transitionContext)
-    UIView.animate(withDuration: animationDuration, delay: 0.0, usingSpringWithDamping: 0.33, initialSpringVelocity: 0.0, options: .curveEaseOut) {
+    UIView.animate(withDuration: animationDuration, delay: 0.0, usingSpringWithDamping: 0.67, initialSpringVelocity: 0.0, options: .curveEaseOut) {
       controller.view.alpha = 1.0
       controller.view.transform = .identity
       controller.view.clipsToBounds = true

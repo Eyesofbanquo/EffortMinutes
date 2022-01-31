@@ -10,7 +10,10 @@ import UIKit
 import SnapKit
 import EffortDesign
 import EffortModel
+
+/* Components */
 import EMRankLadder
+import EMTimer
 
 final class MainViewControllerContainer: UIViewController {
   
@@ -18,7 +21,10 @@ final class MainViewControllerContainer: UIViewController {
                                   EMCategory(name: "Writing", effortMinutes: 6700),
                                   EMCategory(name: "Eating", effortMinutes: 75000)]
   lazy var tabBar: BottomNavigationBar = BottomNavigationBar()
-  lazy var rankPickerView: RankPickerView = RankPickerView(categories: categories)
+  lazy var store: Store = DataMapper()
+  lazy var rankPickerView: RankPickerView = {
+    RankPickerView(store: store)
+  }()
   
   var controllerHash: [Int: UIViewController] = [:]
   var currentIndex: Int = 1
@@ -50,7 +56,7 @@ final class MainViewControllerContainer: UIViewController {
       make.centerX.equalTo(self.view)
     }
     
-    let timer = ViewController()
+    let timer = TimerViewController()
     self.add(timer, atIndex: 1)
   }
   
@@ -92,7 +98,7 @@ extension MainViewControllerContainer: BottomNavigationBarItemDelegate {
     }
     
     var vc: UIViewController!
-    /* THese need to be added off rip or else the delegate call below will crash or do nothing */
+    /* These need to be added off rip or else the delegate call below will crash or do nothing */
     switch index {
       case 0:
         vc = RankViewController()
@@ -101,7 +107,7 @@ extension MainViewControllerContainer: BottomNavigationBarItemDelegate {
           (vc as? RankViewController)?.setEMCategory(categories.first!)
         }
       case 1:
-        vc = ViewController()
+        vc = TimerViewController()
       default: break
     }
     self.add(vc, atIndex: index)
@@ -119,6 +125,4 @@ extension MainViewControllerContainer: RankPickerViewDelegate {
     }
     rankVC.setEMCategory(category)
   }
-  
-  
 }

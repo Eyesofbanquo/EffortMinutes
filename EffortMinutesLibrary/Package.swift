@@ -17,11 +17,13 @@ let package = Package(
                  targets: ["EffortModel"]),
         .library(name: "EMRankLadder",
                  targets: ["EMRankLadder"]),
+        .library(name: "EMTimer", targets: ["EMTimer"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-      .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.0")
+      .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.0"),
+      .package(url: "https://github.com/realm/realm-swift.git", from: "10.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -33,12 +35,13 @@ let package = Package(
         .target(name: "EffortPresentation",
                 dependencies: ["SnapKit"]),
         .target(name: "EffortModel",
-               dependencies: []),
+                dependencies: [.product(name: "RealmSwift", package: "realm-swift")]),
         /* Apps */
         .target(name: "EMRankLadder", dependencies: ["SnapKit",
                                                      "EffortModel",
                                                      "EffortPresentation",
                                                      "EffortDesign"]),
+        .target(name: "EMTimer", dependencies: ["SnapKit", "EffortDesign"]),
         .testTarget(
             name: "EffortDesignTests",
             dependencies: ["EffortDesign"]),

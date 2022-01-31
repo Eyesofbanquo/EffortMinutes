@@ -6,45 +6,10 @@
 //
 
 import Foundation
-//import EffortPresentation
 import EffortModel
 import UIKit
 import SnapKit
-
-class RankPickerTableViewCell: UITableViewCell {
-  static var reuseIdentifier: String = "RankPickerTableViewCell"
-  private var label: UILabel = UILabel()
-  
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-    label.translatesAutoresizingMaskIntoConstraints = false
-    addSubview(label)
-    label.snp.makeConstraints { make in
-      make
-        .leading
-        .top
-        .equalTo(self).offset(8.0)
-      make
-        .bottom
-        .equalTo(self).offset(-8.0)
-    }
-    
-    label.font = .preferredFont(forTextStyle: .headline)
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  func configure(fromCategory category: EMCategory) {
-    self.label.text = category.name
-  }
-  
-  override func prepareForReuse() {
-    self.label.text = ""
-  }
-}
+import RealmSwift
 
 public class RankPickerView: UIView {
   
@@ -52,31 +17,26 @@ public class RankPickerView: UIView {
     case open, closed
   }
   
-  // MARK: - Properties -
-  private var state: State = .closed
-  
   // MARK: - Views -
   private var dimmerView: UIView = UIView()
   private(set) var tableView: UITableView = UITableView()
   
   
   // MARK: - Properties -
+  private var state: State = .closed
   private var categories: [EMCategory] = []
   private var categoryOverflow: [EMCategory] = []
+  private var store: Store
+  private var notificationToken: NotificationToken?
   public var focusedCategory: EMCategory?
   public weak var delegate: RankPickerViewDelegate?
   
   // MARK: - Init -
-  public init(categories: [EMCategory] = []) {
+  public init(store: Store) {
+    self.store = store
     super.init(frame: .zero)
     
-    if categories.count > 1, let firstCategory = categories.first {
-      self.focusedCategory = firstCategory
-      self.categories = [firstCategory]
-      self.categoryOverflow = categories.filter { $0.name.lowercased() != firstCategory.name.lowercased() }
-    } else {
-      self.categories = categories
-    }
+    self.setupCategories()
     
     tableView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -92,14 +52,39 @@ public class RankPickerView: UIView {
     tableView.register(RankPickerTableViewCell.self, forCellReuseIdentifier: RankPickerTableViewCell.reuseIdentifier)
     tableView.dataSource = self
     tableView.delegate = self
+    
+    /* Respond to changes to the realm collection */
+    notificationToken = store.categories.observe { [weak self] changes in
+      switch changes {
+        case .update:
+          self?.setupCategories()
+        default: break
+      }
+    }
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  deinit {
+    notificationToken?.invalidate()
+    notificationToken = nil
+  }
+  
   private func setView(forState state: State) {
     
+  }
+  
+  private func setupCategories() {
+    let categories = Array(self.store.categories)
+    if categories.count > 1, let firstCategory = categories.first?.structured {
+      self.focusedCategory = firstCategory
+      self.categories = [firstCategory]
+      self.categoryOverflow = Array(categories.filter { $0.name.lowercased() != firstCategory.name.lowercased() }.map { $0.structured })
+    } else {
+      self.categories = Array(categories.map { $0.structured })
+    }
   }
   
   public func open() {
@@ -111,10 +96,6 @@ public class RankPickerView: UIView {
     self.categories.append(contentsOf: categoryOverflow)
     tableView.insertRows(at: addedIndexPaths, with: .bottom)
     tableView.endUpdates()
-//
-//    self.setNeedsLayout()
-//    self.layoutIfNeeded()
-
     state = .open
   }
   
@@ -138,11 +119,6 @@ public class RankPickerView: UIView {
 //    self.layoutIfNeeded()
     
    
-  }
-  
-  override public func layoutSubviews() {
-    super.layoutSubviews()
-//    self.invalidateIntrinsicContentSize()
   }
   
   override public var intrinsicContentSize: CGSize {

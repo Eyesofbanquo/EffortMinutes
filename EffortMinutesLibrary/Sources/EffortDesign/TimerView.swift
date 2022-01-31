@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 import SnapKit
 
-public protocol TimerViewDelegate: AnyObject { }
+public protocol TimerViewDelegate: AnyObject {
+  func timerView(_ timerView: TimerView, didUpdateTime time: TimeInterval)
+}
 
 public final class TimerView: UIView {
   
@@ -144,7 +146,8 @@ extension TimerView: CircleProgressDelegate {
       }
     }
     print(Self.IntentionalMinutes[currentPosition], currentPosition)
-    timeLabel.text = "\(Self.IntentionalMinutes[currentPosition]):00 IM"
+    delegate?.timerView(self, didUpdateTime: Self.IntentionalMinutes[currentPosition])
+//    timeLabel.text = "\(Self.IntentionalMinutes[currentPosition]):00 IM"
     
   }
 }
