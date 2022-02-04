@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     vc.didMove(toParent: self)
     
-    vc.setEMCategory(EMCategory(name: "Reading", effortMinutes: 75000))
+    vc.setEMCategory(EMCategory(id: 0, name: "Reading", effortMinutes: 75000))
   }
   
   deinit {

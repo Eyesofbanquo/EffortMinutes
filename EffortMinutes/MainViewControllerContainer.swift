@@ -7,30 +7,47 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 import SnapKit
 import EffortDesign
 import EffortModel
+import EffortPresentation
 
 /* Components */
 import EMRankLadder
 import EMTimer
+import EMAddCategory
 
 final class MainViewControllerContainer: UIViewController {
   
-  let categories: [EMCategory] = [EMCategory(name: "Reading", effortMinutes: 100),
-                                  EMCategory(name: "Writing", effortMinutes: 6700),
-                                  EMCategory(name: "Eating", effortMinutes: 75000)]
+  let categories: [EMCategory] = [EMCategory(id: 0, name: "Reading", effortMinutes: 100),
+                                  EMCategory(id: 1, name: "Writing", effortMinutes: 6700),
+                                  EMCategory(id: 2, name: "Eating", effortMinutes: 75000)]
   lazy var tabBar: BottomNavigationBar = BottomNavigationBar()
-  lazy var store: Store = DataMapper()
-  lazy var rankPickerView: RankPickerView = {
-    RankPickerView(store: store)
+  lazy var store: Store = {
+#if DEBUG
+    let config: Realm.Configuration = .init(inMemoryIdentifier: "DEBUG")
+    let realm = try! Realm(configuration: config)
+    return DataMapper(realm: realm)
+#else
+    return DataMapper()
+#endif
   }()
+  lazy var categoryBar: RankDisplayBarView = RankDisplayBarView()
   
   var controllerHash: [Int: UIViewController] = [:]
   var currentIndex: Int = 1
   
+  lazy var viewCategoriesTransitioningDelegate: GenericTransitioningDelegate =
+  GenericTransitioningDelegate(presentation: PopPresentAnimation(),
+                               dismissal: PopDismissAnimation(),
+                               blurEffectStyle: .systemThinMaterialDark)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    /* SHould launch something if there aren't any categories present */
+    
     
     view.backgroundColor = .white
     
@@ -41,16 +58,17 @@ final class MainViewControllerContainer: UIViewController {
     tabBar.add(item: BottomNavigationBarItem(index: 1, icon: "timer", label: ""))
     tabBar.add(item: BottomNavigationBarItem(index: 2, icon: "gearshape.fill", label: "Settings"))
     
-    rankPickerView.translatesAutoresizingMaskIntoConstraints = false
-    rankPickerView.delegate = self
+    categoryBar.translatesAutoresizingMaskIntoConstraints = false
+    categoryBar.delegate = self
+    categoryBar.setCategory("Default Category")
     
-    self.view.insertSubview(rankPickerView, at: 90)
+    self.view.insertSubview(categoryBar, at: 90)
     self.view.addSubview(tabBar)
     tabBar.snp.makeConstraints { make in
       make.leading.trailing.equalTo(self.view)
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
     }
-    rankPickerView.snp.makeConstraints { make in
+    categoryBar.snp.makeConstraints { make in
       make.leading.trailing.equalTo(self.view)
       make.bottom.equalTo(tabBar.snp.top)
       make.centerX.equalTo(self.view)
@@ -62,8 +80,8 @@ final class MainViewControllerContainer: UIViewController {
   
   private func add(_ child: UIViewController, atIndex index: Int) {
     self.addChild(child)
-//    self.view.addSubview(child.view)
-    self.view.insertSubview(child.view, belowSubview: rankPickerView)
+    //    self.view.addSubview(child.view)
+    self.view.insertSubview(child.view, belowSubview: categoryBar)
     child.view.snp.makeConstraints { make in
       make.leading.trailing.equalTo(self.view)
       make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -116,13 +134,13 @@ extension MainViewControllerContainer: BottomNavigationBarItemDelegate {
   }
 }
 
-extension MainViewControllerContainer: RankPickerViewDelegate {
-  func rankPickerView(_ rankPickerView: RankPickerView, didSelectCategory category: EMCategory) {
-    /* CHange */
-    let rankViewControllerHash = controllerHash.first(where: { ($0.value as? RankViewController ) != nil })
-    guard let rankVC = rankViewControllerHash?.value as? RankViewController else {
-      return
+extension MainViewControllerContainer: RankDisplayBarViewDelegate {
+  func rankDisplayBarView(_ bar: RankDisplayBarView, didSelectView: Bool) {
+    let builder = CategoryContainerBuilder.instance(usingStore: self.store) { [weak bar] category in
+      bar?.setCategory(category.name)
     }
-    rankVC.setEMCategory(category)
+    builder.transitioningDelegate = viewCategoriesTransitioningDelegate
+    builder.modalPresentationStyle = .custom
+    self.present(builder, animated: true, completion: nil)
   }
 }

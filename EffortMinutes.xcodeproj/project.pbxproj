@@ -18,6 +18,15 @@
 		333B90DA278CA6F900429B32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333B90D8278CA6F900429B32 /* LaunchScreen.storyboard */; };
 		335166FB27A7699800055775 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 335166FA27A7699800055775 /* SnapKit */; };
 		335166FD27A769A500055775 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 335166FC27A769A500055775 /* RealmSwift */; };
+		3351670527A83A2200055775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351670427A83A2200055775 /* AppDelegate.swift */; };
+		3351670727A83A2200055775 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351670627A83A2200055775 /* SceneDelegate.swift */; };
+		3351670927A83A2200055775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3351670827A83A2200055775 /* ViewController.swift */; };
+		3351670E27A83A2400055775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3351670D27A83A2400055775 /* Assets.xcassets */; };
+		3351671127A83A2400055775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3351670F27A83A2400055775 /* LaunchScreen.storyboard */; };
+		3351671727A83F8800055775 /* EMAddCategory in Frameworks */ = {isa = PBXBuildFile; productRef = 3351671627A83F8800055775 /* EMAddCategory */; };
+		3351671927A83F9000055775 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3351671827A83F9000055775 /* SnapKit */; };
+		3351671B27A83F9500055775 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3351671A27A83F9500055775 /* RealmSwift */; };
+		3351671D27A8404400055775 /* EffortModel in Frameworks */ = {isa = PBXBuildFile; productRef = 3351671C27A8404400055775 /* EffortModel */; };
 		337356EC27A2F8AD0068D755 /* EffortDesign in Frameworks */ = {isa = PBXBuildFile; productRef = 337356EB27A2F8AD0068D755 /* EffortDesign */; };
 		337356EE27A2FC510068D755 /* EffortPresentation in Frameworks */ = {isa = PBXBuildFile; productRef = 337356ED27A2FC510068D755 /* EffortPresentation */; };
 		337356F627A379F10068D755 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337356F527A379F10068D755 /* AppDelegate.swift */; };
@@ -42,6 +51,7 @@
 		3373573727A687830068D755 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3373573627A687830068D755 /* Assets.xcassets */; };
 		3373573A27A687830068D755 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3373573827A687830068D755 /* LaunchScreen.storyboard */; };
 		3373574027A6878B0068D755 /* EffortDesign in Frameworks */ = {isa = PBXBuildFile; productRef = 3373573F27A6878B0068D755 /* EffortDesign */; };
+		3398F9EE27AD9E7C00E570CC /* EMAddCategory in Frameworks */ = {isa = PBXBuildFile; productRef = 3398F9ED27AD9E7C00E570CC /* EMAddCategory */; };
 		33C063CE27A687D400D0B893 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33C063CD27A687D400D0B893 /* SnapKit */; };
 		33C063D027A758D700D0B893 /* EMTimer in Frameworks */ = {isa = PBXBuildFile; productRef = 33C063CF27A758D700D0B893 /* EMTimer */; };
 		33C063D827A7674300D0B893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C063D727A7674300D0B893 /* AppDelegate.swift */; };
@@ -87,6 +97,13 @@
 		333B90D6278CA6F900429B32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		333B90D9278CA6F900429B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		333B90DB278CA6F900429B32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3351670227A83A2200055775 /* EM_AddCategory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EM_AddCategory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3351670427A83A2200055775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3351670627A83A2200055775 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3351670827A83A2200055775 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3351670D27A83A2400055775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3351671027A83A2400055775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3351671227A83A2400055775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		337356E927A2F71F0068D755 /* EffortMinutesLibrary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EffortMinutesLibrary; sourceTree = "<group>"; };
 		337356F327A379F10068D755 /* EM_RankViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EM_RankViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337356F527A379F10068D755 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,7 +154,19 @@
 				335166FB27A7699800055775 /* SnapKit in Frameworks */,
 				3373570827A38A030068D755 /* EMRankLadder in Frameworks */,
 				337356EE27A2FC510068D755 /* EffortPresentation in Frameworks */,
+				3398F9EE27AD9E7C00E570CC /* EMAddCategory in Frameworks */,
 				33C063D027A758D700D0B893 /* EMTimer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335166FF27A83A2200055775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3351671B27A83F9500055775 /* RealmSwift in Frameworks */,
+				3351671727A83F8800055775 /* EMAddCategory in Frameworks */,
+				3351671D27A8404400055775 /* EffortModel in Frameworks */,
+				3351671927A83F9000055775 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +233,7 @@
 				33C063D627A7674300D0B893 /* EM_DataMapper */,
 				33C063ED27A7674500D0B893 /* EM_DataMapperTests */,
 				33C063F727A7674500D0B893 /* EM_DataMapperUITests */,
+				3351670327A83A2200055775 /* EM_AddCategory */,
 				333B90CB278CA6F700429B32 /* Products */,
 				337356EA27A2F8AD0068D755 /* Frameworks */,
 			);
@@ -219,6 +249,7 @@
 				33C063D527A7674300D0B893 /* EM_DataMapper.app */,
 				33C063EA27A7674500D0B893 /* EM_DataMapperTests.xctest */,
 				33C063F427A7674500D0B893 /* EM_DataMapperUITests.xctest */,
+				3351670227A83A2200055775 /* EM_AddCategory.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +269,19 @@
 				333B90DB278CA6F900429B32 /* Info.plist */,
 			);
 			path = EffortMinutes;
+			sourceTree = "<group>";
+		};
+		3351670327A83A2200055775 /* EM_AddCategory */ = {
+			isa = PBXGroup;
+			children = (
+				3351670427A83A2200055775 /* AppDelegate.swift */,
+				3351670627A83A2200055775 /* SceneDelegate.swift */,
+				3351670827A83A2200055775 /* ViewController.swift */,
+				3351670D27A83A2400055775 /* Assets.xcassets */,
+				3351670F27A83A2400055775 /* LaunchScreen.storyboard */,
+				3351671227A83A2400055775 /* Info.plist */,
+			);
+			path = EM_AddCategory;
 			sourceTree = "<group>";
 		};
 		337356EA27A2F8AD0068D755 /* Frameworks */ = {
@@ -343,9 +387,33 @@
 				33C0640827A7695800D0B893 /* Realm */,
 				33C0640A27A7695800D0B893 /* RealmSwift */,
 				335166FA27A7699800055775 /* SnapKit */,
+				3398F9ED27AD9E7C00E570CC /* EMAddCategory */,
 			);
 			productName = CircleBuns;
 			productReference = 333B90CA278CA6F700429B32 /* EffortMinutes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3351670127A83A2200055775 /* EM_AddCategory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3351671327A83A2400055775 /* Build configuration list for PBXNativeTarget "EM_AddCategory" */;
+			buildPhases = (
+				335166FE27A83A2200055775 /* Sources */,
+				335166FF27A83A2200055775 /* Frameworks */,
+				3351670027A83A2200055775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EM_AddCategory;
+			packageProductDependencies = (
+				3351671627A83F8800055775 /* EMAddCategory */,
+				3351671827A83F9000055775 /* SnapKit */,
+				3351671A27A83F9500055775 /* RealmSwift */,
+				3351671C27A8404400055775 /* EffortModel */,
+			);
+			productName = EM_AddCategory;
+			productReference = 3351670227A83A2200055775 /* EM_AddCategory.app */;
 			productType = "com.apple.product-type.application";
 		};
 		337356F227A379F10068D755 /* EM_RankViewController */ = {
@@ -480,6 +548,9 @@
 					333B90C9278CA6F700429B32 = {
 						CreatedOnToolsVersion = 13.1;
 					};
+					3351670127A83A2200055775 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					337356F227A379F10068D755 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -526,6 +597,7 @@
 				33C063D427A7674300D0B893 /* EM_DataMapper */,
 				33C063E927A7674500D0B893 /* EM_DataMapperTests */,
 				33C063F327A7674500D0B893 /* EM_DataMapperUITests */,
+				3351670127A83A2200055775 /* EM_AddCategory */,
 			);
 		};
 /* End PBXProject section */
@@ -538,6 +610,15 @@
 				333B90DA278CA6F900429B32 /* LaunchScreen.storyboard in Resources */,
 				333B90D7278CA6F900429B32 /* Assets.xcassets in Resources */,
 				333B90D5278CA6F700429B32 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3351670027A83A2200055775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3351671127A83A2400055775 /* LaunchScreen.storyboard in Resources */,
+				3351670E27A83A2400055775 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +688,16 @@
 				330F6ED82797252500AE8BA2 /* MainViewControllerContainer.swift in Sources */,
 				330F6ED4279713CC00AE8BA2 /* MainTabBarItem.swift in Sources */,
 				333B90D0278CA6F700429B32 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		335166FE27A83A2200055775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3351670927A83A2200055775 /* ViewController.swift in Sources */,
+				3351670527A83A2200055775 /* AppDelegate.swift in Sources */,
+				3351670727A83A2200055775 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +786,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				333B90D9278CA6F900429B32 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3351670F27A83A2400055775 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3351671027A83A2400055775 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -925,6 +1024,67 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.donderapps.EffortMinutes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3351671427A83A2400055775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W8U24UXMM;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					FRAMEWORK,
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EM_AddCategory/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donderapps.EM-AddCategory";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3351671527A83A2400055775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W8U24UXMM;
+				GCC_PREPROCESSOR_DEFINITIONS = FRAMEWORK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EM_AddCategory/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donderapps.EM-AddCategory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1267,6 +1427,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3351671327A83A2400055775 /* Build configuration list for PBXNativeTarget "EM_AddCategory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3351671427A83A2400055775 /* Debug */,
+				3351671527A83A2400055775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3373570427A379F20068D755 /* Build configuration list for PBXNativeTarget "EM_RankViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1353,6 +1522,24 @@
 			package = 33C0640727A7695800D0B893 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
+		3351671627A83F8800055775 /* EMAddCategory */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EMAddCategory;
+		};
+		3351671827A83F9000055775 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 339B849527934E32000E7ECF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3351671A27A83F9500055775 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33C0640727A7695800D0B893 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		3351671C27A8404400055775 /* EffortModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EffortModel;
+		};
 		337356EB27A2F8AD0068D755 /* EffortDesign */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EffortDesign;
@@ -1381,6 +1568,10 @@
 		3373573F27A6878B0068D755 /* EffortDesign */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EffortDesign;
+		};
+		3398F9ED27AD9E7C00E570CC /* EMAddCategory */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EMAddCategory;
 		};
 		33C063CD27A687D400D0B893 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,14 +9,20 @@ import Foundation
 import RealmSwift
 
 public class DataMapper: Store {
-  var realm: Realm!
-  var incrementer: IncrementerRO!
-  public var categories: Results<EMCategoryRO>!
   
+  public enum Error: Swift.Error {
+    case databaseError
+    case objectNotFound
+  }
+  
+  public var realm: Realm!
+  public var categories: Results<EMCategoryRO>!
   public var categoriesArray: [EMCategoryRO] {
     guard let mappedCategories = (categories.map { $0 }) else { return [] }
     return Array(mappedCategories)
   }
+  
+  var incrementer: IncrementerRO!
   
   public init(realm: Realm = try! Realm()) {
     self.realm = realm
@@ -43,6 +49,31 @@ public class DataMapper: Store {
         
         /* Save category object */
         realm.add(realmCategory)
+      }
+    } catch {
+      throw NSError()
+    }
+  }
+  
+  public func addCategory(_ category: EMCategory, atIndex index: Int) throws {
+    let realmCategory = EMCategoryRO(fromCategory: category, atIndex: index)
+    do {
+      try realm.write {
+        /* Save category object */
+        realm.add(realmCategory)
+      }
+    } catch {
+      throw NSError()
+    }
+  }
+  
+  public func removeCategory(_ category: EMCategory) throws {
+    guard let savedCategory = realm.object(ofType: EMCategoryRO.self, forPrimaryKey: category.id) else {
+      throw Error.objectNotFound
+    }
+    do {
+      try realm.write {
+        realm.delete(savedCategory)
       }
     } catch {
       throw NSError()

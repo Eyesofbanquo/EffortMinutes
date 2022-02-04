@@ -14,7 +14,7 @@ public class EMCategoryRO: Object {
   @Persisted public var effortMinutes: Int = 0
   
   public var structured: EMCategory {
-    EMCategory(name: self.name, effortMinutes: self.effortMinutes)
+    EMCategory(id: self.id, name: self.name, effortMinutes: self.effortMinutes)
   }
   
   public convenience init(fromCategory category: EMCategory, atIndex index: Int) {

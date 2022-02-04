@@ -21,9 +21,9 @@ class ViewController: UIViewController {
   
   lazy var rankDrawer: RankPickerView = {
     /* Add items */
-    let categories = [EMCategory(name: "Reading", effortMinutes: 100),
-                      EMCategory(name: "Writing", effortMinutes: 100),
-                      EMCategory(name: "Eatingawfawfwa", effortMinutes: 100)]
+    let categories = [EMCategory(id: 0, name: "Reading", effortMinutes: 100),
+                      EMCategory(id: 1, name: "Writing", effortMinutes: 100),
+                      EMCategory(id: 2, name: "Eatingawfawfwa", effortMinutes: 100)]
     categories.forEach { category in
       try? self.store.addCategory(category)
     }

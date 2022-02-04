@@ -18,7 +18,7 @@ public final class RankViewController: UIViewController {
   
   var scrollView: UIScrollView!
   lazy var contentView: UIView = UIView()
-  lazy var detailTransitioningDelegate: GenericTransitioningDelegate = GenericTransitioningDelegate(presentation: PopPresentAnimation(), dismissal: PopDismissAnimation())
+  lazy var detailTransitioningDelegate: GenericTransitioningDelegate = GenericTransitioningDelegate(presentation: PopPresentAnimation(), dismissal: PopDismissAnimation(), blurEffectStyle: .systemUltraThinMaterialLight)
   
   /* This is for displaying all ranks */
   lazy var ranks: [Rank] = Rank.allCases

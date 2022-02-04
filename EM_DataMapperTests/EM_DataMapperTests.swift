@@ -30,7 +30,7 @@ class EM_DataMapperTests: XCTestCase {
   }
   
   func testAddingNewCategory() {
-    let newCategory = EMCategory(name: "Reading", effortMinutes: 0)
+    let newCategory = EMCategory(id: 0, name: "Reading", effortMinutes: 0)
     try? sut.addCategory(newCategory)
     
     let categories = realm.objects(EMCategoryRO.self)
@@ -45,15 +45,29 @@ class EM_DataMapperTests: XCTestCase {
     
     XCTAssertEqual(incrementer?.currentIncrement, 0)
 
-    let newCategory = EMCategory(name: "Reading", effortMinutes: 0)
+    let newCategory = EMCategory(id: 1, name: "Reading", effortMinutes: 0)
     try? sut.addCategory(newCategory)
     
     XCTAssertEqual(incrementer?.currentIncrement, 1)
     
-    let newCategorys = EMCategory(name: "Readings", effortMinutes: 0)
+    let newCategorys = EMCategory(id: 2, name: "Readings", effortMinutes: 0)
     try? sut.addCategory(newCategorys)
     
     XCTAssertEqual(incrementer?.currentIncrement, 2)
+  }
+  
+  func testNotEquatable() {
+    let cat1 = EMCategory(id: 1, name: "Reading", effortMinutes: 0)
+    let cat2 = EMCategory(id: 0, name: "Reading", effortMinutes: 0)
+
+    XCTAssertNotEqual(cat1, cat2)
+  }
+  
+  func testEquatable() {
+    let cat1 = EMCategory(id: 1, name: "Reading", effortMinutes: 0)
+    let cat2 = EMCategory(id: 1, name: "Reading", effortMinutes: 0)
+    
+    XCTAssertEqual(cat1, cat2)
   }
   
 }

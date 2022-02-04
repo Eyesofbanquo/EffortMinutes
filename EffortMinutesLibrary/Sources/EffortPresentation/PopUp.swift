@@ -13,14 +13,16 @@ final public class GenericTransitioningDelegate<Presentation: UIViewControllerAn
   
   var presentation: Presentation
   var dismissal: Dismissal
+  var blurEffectStyle: UIBlurEffect.Style
   
-  public init(presentation: Presentation, dismissal: Dismissal) {
+  public init(presentation: Presentation, dismissal: Dismissal, blurEffectStyle: UIBlurEffect.Style) {
     self.presentation = presentation
     self.dismissal = dismissal
+    self.blurEffectStyle = blurEffectStyle
   }
   
   public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return DimmedPresentationController(presentedViewController: presented, presenting: presenting)
+    return DimmedPresentationController(presentedViewController: presented, presenting: presenting, blurEffectStyle: blurEffectStyle)
   }
   
   public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
