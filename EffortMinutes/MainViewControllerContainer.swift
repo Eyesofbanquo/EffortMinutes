@@ -43,6 +43,12 @@ final class MainViewControllerContainer: UIViewController {
                                dismissal: PopDismissAnimation(),
                                blurEffectStyle: .systemThinMaterialDark)
   
+  let rankViewController: RankViewController = {
+    let vc = RankViewController()
+    let _ = vc.view
+    return vc
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -75,12 +81,15 @@ final class MainViewControllerContainer: UIViewController {
     }
     
     let timer = TimerViewController()
+    self.add(rankViewController, atIndex: 0)
     self.add(timer, atIndex: 1)
+    tabBar.setSelected(1, animated: false)
   }
   
   private func add(_ child: UIViewController, atIndex index: Int) {
+    child.view.translatesAutoresizingMaskIntoConstraints = false
+    
     self.addChild(child)
-    //    self.view.addSubview(child.view)
     self.view.insertSubview(child.view, belowSubview: categoryBar)
     child.view.snp.makeConstraints { make in
       make.leading.trailing.equalTo(self.view)
@@ -119,11 +128,10 @@ extension MainViewControllerContainer: BottomNavigationBarItemDelegate {
     /* These need to be added off rip or else the delegate call below will crash or do nothing */
     switch index {
       case 0:
-        vc = RankViewController()
-        let _ = vc.view
         if categories.count > 0 {
-          (vc as? RankViewController)?.setEMCategory(categories.first!)
+          rankViewController.setEMCategory(categories.first!)
         }
+        vc = rankViewController
       case 1:
         vc = TimerViewController()
       default: break

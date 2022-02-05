@@ -14,7 +14,6 @@ public final class BottomNavigationBar: UIView, BottomNavigationBarItemDelegate 
   var stackView: UIStackView
   var items: [BottomNavigationBarItem] = []
   public weak var delegate: BottomNavigationBarItemDelegate?
-  var handler: BottomNavigationHandler
   
   public init() {
     stackView = UIStackView()
@@ -24,8 +23,6 @@ public final class BottomNavigationBar: UIView, BottomNavigationBarItemDelegate 
     stackView.spacing = 4.0
     stackView.alignment = .center
     stackView.distribution = .equalSpacing
-    
-    handler = BottomNavigationHandler()
     
     super.init(frame: .zero)
     
@@ -44,7 +41,13 @@ public final class BottomNavigationBar: UIView, BottomNavigationBarItemDelegate 
   
   public func add(item: BottomNavigationBarItem) {
     stackView.insertArrangedSubview(item, at: item.index)
+    items.append(item)
     item.delegate = self
+  }
+  
+  public func setSelected(_ selected: Int, animated: Bool) {
+    guard selected < items.count else { return }
+    items[selected].select(animated: animated)
   }
   
   public func mainTabBarItem(_ item: BottomNavigationBarItem, didSelectIndex index: Int) {

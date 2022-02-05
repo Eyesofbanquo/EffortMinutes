@@ -73,7 +73,18 @@ public final class BottomNavigationBarItem: UIView {
     }
   }
   
-  @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+  public func select(animated: Bool) {
+    guard animated else {
+      self.isSelected.toggle()
+      self.label.alpha = 1.0
+      self.label.isHidden = self.isSelected == false
+      self.icon.tintColor = self.isSelected ? .white : .init(hexString: "#8E6C88")
+      self.label.textColor = self.isSelected ? .white : .init(hexString: "#8E6C88")
+      self.stackView.layoutIfNeeded()
+      self.delegate?.mainTabBarItem(self, didSelectIndex: self.index)
+      return
+    }
+    
     isSelected.toggle()
     self.label.alpha = 0.0
     UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut) {
@@ -87,9 +98,12 @@ public final class BottomNavigationBarItem: UIView {
       UIView.animate(withDuration: 0.1, delay: 0.25, options: .curveEaseInOut) {
         self.label.alpha = 1.0
         self.label.textColor = self.isSelected ? .white : .init(hexString: "#8E6C88")
-        
       }
     }
+  }
+  
+  @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+    select(animated: true)
   }
 }
 
