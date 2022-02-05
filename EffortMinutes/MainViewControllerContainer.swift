@@ -94,7 +94,7 @@ final class MainViewControllerContainer: UIViewController {
     child.view.snp.makeConstraints { make in
       make.leading.trailing.equalTo(self.view)
       make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-      make.bottom.equalTo(self.tabBar.snp.top)
+      make.bottom.equalTo(self.categoryBar.snp.top)
     }
     child.didMove(toParent: self)
     if controllerHash[index] == nil {
