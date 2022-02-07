@@ -18,7 +18,8 @@ let package = Package(
         .library(name: "EMRankLadder",
                  targets: ["EMRankLadder"]),
         .library(name: "EMTimer", targets: ["EMTimer"]),
-        .library(name: "EMAddCategory", targets: ["EMAddCategory"])
+        .library(name: "EMAddCategory", targets: ["EMAddCategory"]),
+        .library(name: "EMOnboarding", targets: ["EMOnboarding"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -47,6 +48,9 @@ let package = Package(
                                                       "EffortDesign",
                                                       "EffortPresentation",
                                                       .product(name: "RealmSwift", package: "realm-swift")], swiftSettings: [.define("FRAMEWORK", .when(platforms: [.iOS], configuration: .debug))]),
+        .target(name: "EMOnboarding",
+                dependencies: ["SnapKit", "EffortDesign"],
+                swiftSettings: [.define("ONBOARDING_RESET", .when(platforms: [.iOS], configuration: .debug))]),
         .testTarget(
             name: "EffortDesignTests",
             dependencies: ["EffortDesign"]),

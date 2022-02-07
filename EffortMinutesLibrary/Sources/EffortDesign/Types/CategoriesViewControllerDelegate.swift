@@ -15,8 +15,14 @@ public enum CategoriesViewDelegateAction {
 
 /* The view conforms to this*/
 public protocol CategoriesViewControllerDelegate: AnyObject {
+  /* Properties */
+  var projection: AnyObject { get }
+  var delegate: CategoriesViewDelegate? { get set }
+  
+  /* Init */
+  init(backgroundColor: UIColor)
+  
+  /* Actions */
   func performAction(_ action: CategoriesViewDelegateAction, forCategory category: EMCategory)
   func reload()
-  var projection: AnyObject { get }
-  init(backgroundColor: UIColor)
 }

@@ -42,7 +42,9 @@ public class CategoriesViewController: UIViewController {
   var onSelect: ((EMCategory) -> Void)?
   
   // MARK: - Init -
-  internal init(object: CategoriesViewControllerDelegate.Type, store: Store, onSelect: ((EMCategory) -> Void)? = nil) {
+  internal init(object: CategoriesViewControllerDelegate.Type,
+                store: Store,
+                onSelect: ((EMCategory) -> Void)? = nil) {
     self.store = store
     self.viewControllerDelegate = object.init(backgroundColor: .white)
     self.onSelect = onSelect

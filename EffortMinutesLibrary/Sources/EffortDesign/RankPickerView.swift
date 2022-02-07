@@ -9,7 +9,6 @@ import Foundation
 import EffortModel
 import UIKit
 import SnapKit
-import RealmSwift
 
 public class RankPickerView: UIView {
   
@@ -27,7 +26,6 @@ public class RankPickerView: UIView {
   private var categories: [EMCategory] = []
   private var categoryOverflow: [EMCategory] = []
   private var store: Store
-  private var notificationToken: NotificationToken?
   public var focusedCategory: EMCategory?
   public weak var delegate: RankPickerViewDelegate?
   
@@ -52,24 +50,10 @@ public class RankPickerView: UIView {
     tableView.register(RankPickerTableViewCell.self, forCellReuseIdentifier: RankPickerTableViewCell.reuseIdentifier)
     tableView.dataSource = self
     tableView.delegate = self
-    
-    /* Respond to changes to the realm collection */
-    notificationToken = store.categories.observe { [weak self] changes in
-      switch changes {
-        case .update:
-          self?.setupCategories()
-        default: break
-      }
-    }
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-  
-  deinit {
-    notificationToken?.invalidate()
-    notificationToken = nil
   }
   
   private func setView(forState state: State) {

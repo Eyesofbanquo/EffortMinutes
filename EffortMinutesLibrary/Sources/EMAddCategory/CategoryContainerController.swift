@@ -12,8 +12,10 @@ import EffortModel
 
 public class CategoryContainerBuilder {
   
-  public static func instance(usingStore store: Store, onSelect: ((EMCategory) -> Void)? = nil) -> UINavigationController {
-    let categoriesController = CategoriesViewController(object: CategoriesView.self, store: store, onSelect: onSelect)
+  public static func instance(object: CategoriesViewControllerDelegate.Type = CategoriesView.self,
+                              usingStore store: Store,
+                              onSelect: ((EMCategory) -> Void)? = nil) -> UINavigationController {
+    let categoriesController = CategoriesViewController(object: object, store: store, onSelect: onSelect)
     let navigationController = UINavigationController(rootViewController: categoriesController)
     return navigationController
   }
